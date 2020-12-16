@@ -2,10 +2,10 @@
 var generateBtn = document.querySelector("#generate");
 
 // Event listener
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", prompt_user_for_input);
 
-// Begins The Password Gen
-function writePassword() {
+function prompt_user_for_input() {
+
 
   // check for password length
   var number = prompt("How long of a password would you like? (8-128 characters)");
@@ -16,11 +16,20 @@ function writePassword() {
   }
   console.log(number)
 
+
   // confirm characters to include
   var wantLowercase = confirm("Click 'OK' if you would like lowercase letters? (abc...)");
   var wantUppercase = confirm("Click 'OK' if you would like uppercase letters? (ABC...)");
   var wantNumeric = confirm("Click 'OK' if you would like numeric characters? (123...)");
   var wantSpecial = confirm("Click 'OK' if you would like special characters? (!`$...)");
+
+  if (wantLowercase == false)
+
+    writePassword({ number, wantLowercase, wantUppercase, wantNumeric, wantSpecial })
+
+}
+// Begins The Password Gen
+function writePassword(params) {
 
   // available characters
   var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -28,31 +37,32 @@ function writePassword() {
   var numerals = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   var specials = ["~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "-", "=", "{", "}", "[", "]", ":", ";", "<", ">", "?", ",", ".", "/", "|"];
 
-  //selected characters
+
+  //stores selected characters
   var selectedCharacters = [];
 
 
   //check for confirmed character types
-  if (wantLowercase == true) {
+  if (params.wantLowercase == true) {
     selectedCharacters = selectedCharacters.concat(lowercase);
   }
-  if (wantUppercase == true) {
+  if (params.wantUppercase == true) {
     selectedCharacters = selectedCharacters.concat(uppercase);
   }
-  if (wantNumeric == true) {
+  if (params.wantNumeric == true) {
     selectedCharacters = selectedCharacters.concat(numerals);
   }
-  if (wantSpecial == true) {
+  if (params.wantSpecial == true) {
     selectedCharacters = selectedCharacters.concat(specials);
   }
   console.log(selectedCharacters);
 
-  //store generated random characters
+
+  //stores generated random characters
   var password = "";
 
   //generate random numbers based on selection
-
-  for (var i = 0; i < number; i++) {
+  for (var i = 0; i < params.number; i++) {
     password = password + selectedCharacters[Math.floor(Math.random() * selectedCharacters.length)];
   };
   console.log(password);
