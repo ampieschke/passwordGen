@@ -23,9 +23,9 @@ function prompt_user_for_input() {
   var wantNumeric = confirm("Click 'OK' if you would like numeric characters? (123...)");
   var wantSpecial = confirm("Click 'OK' if you would like special characters? (!`$...)");
 
-  if (wantLowercase == false)
 
-    writePassword({ number, wantLowercase, wantUppercase, wantNumeric, wantSpecial })
+
+  writePassword({ number, wantLowercase, wantUppercase, wantNumeric, wantSpecial })
 
 }
 // Begins The Password Gen
