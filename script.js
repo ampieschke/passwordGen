@@ -14,7 +14,7 @@ function prompt_user_for_input() {
     alert("Must be between 8 and 128 characters!")
     var number = prompt("How long of a password would you like? (8-128 characters)");
   }
-  console.log(number)
+  console.log(number);
 
 
   // confirm characters to include
@@ -40,23 +40,35 @@ function writePassword(params) {
 
   //stores selected characters
   var selectedCharacters = [];
-
+  var choices = 0
 
   //check for confirmed character types
   if (params.wantLowercase == true) {
     selectedCharacters = selectedCharacters.concat(lowercase);
+    choices = choices + 1;
+    console.log(choices);
   }
   if (params.wantUppercase == true) {
     selectedCharacters = selectedCharacters.concat(uppercase);
+    choices = choices + 1;
+    console.log(choices);
   }
   if (params.wantNumeric == true) {
     selectedCharacters = selectedCharacters.concat(numerals);
+    choices = choices + 1;
+    console.log(choices);
   }
   if (params.wantSpecial == true) {
     selectedCharacters = selectedCharacters.concat(specials);
+    choices = choices + 1;
+    console.log(choices);
   }
   console.log(selectedCharacters);
 
+  if (choices = 0) {
+    alert("No Character Types Selected")
+
+  }
 
   //stores generated random characters
   var password = "";
@@ -66,7 +78,6 @@ function writePassword(params) {
     password = password + selectedCharacters[Math.floor(Math.random() * selectedCharacters.length)];
   };
   console.log(password);
-
 
   // prints password to html
   document.getElementById("password").innerHTML = password;
