@@ -10,7 +10,7 @@ function prompt_user_for_input() {
   // check for password length
   var number = prompt("How long of a password would you like? (8-128 characters)");
 
-  if (number < 8 || number > 128) {
+  while (number < 8 || number > 128) {
     alert("Must be between 8 and 128 characters!")
     var number = prompt("How long of a password would you like? (8-128 characters)");
   }
