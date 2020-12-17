@@ -4,6 +4,8 @@ var generateBtn = document.querySelector("#generate");
 // Event listener
 generateBtn.addEventListener("click", prompt_user_for_input);
 
+
+// Function to Collect User Input
 function prompt_user_for_input() {
 
 
@@ -24,11 +26,11 @@ function prompt_user_for_input() {
   var wantSpecial = confirm("Click 'OK' if you would like special characters? (!`$...)");
 
 
-
+  //set parameters for writing password
   writePassword({ number, wantLowercase, wantUppercase, wantNumeric, wantSpecial })
 
 }
-// Begins The Password Gen
+// Begins The Password
 function writePassword(params) {
 
   // available characters
@@ -40,34 +42,24 @@ function writePassword(params) {
 
   //stores selected characters
   var selectedCharacters = [];
-  var choices = 0
 
-  //check for confirmed character types
+
+  //check for confirmed character types and add them to the selected characters
   if (params.wantLowercase == true) {
     selectedCharacters = selectedCharacters.concat(lowercase);
-    choices = choices + 1;
-    console.log(choices);
   }
   if (params.wantUppercase == true) {
     selectedCharacters = selectedCharacters.concat(uppercase);
-    choices = choices + 1;
-    console.log(choices);
   }
   if (params.wantNumeric == true) {
     selectedCharacters = selectedCharacters.concat(numerals);
-    choices = choices + 1;
-    console.log(choices);
   }
   if (params.wantSpecial == true) {
     selectedCharacters = selectedCharacters.concat(specials);
-    choices = choices + 1;
-    console.log(choices);
   }
   console.log(selectedCharacters);
-
-  if (choices = 0) {
-    alert("No Character Types Selected")
-
+  if (selectedCharacters == "") {
+    alert("No Character Sets Selected. Please Restart.")
   }
 
   //stores generated random characters
